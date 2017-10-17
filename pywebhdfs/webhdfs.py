@@ -112,7 +112,7 @@ class PyWebHdfsClient(object):
         uri = init_response.headers['location']
         response = self.session.put(
             uri, data=file_data,
-            headers={'content-type': 'application/octet-stream'},
+            headers={'content-type': 'application/octet-stream', **self.request_extra_headers},
             **self.request_extra_opts)
 
         if not response.status_code == http_client.CREATED:
@@ -169,7 +169,7 @@ class PyWebHdfsClient(object):
         uri = init_response.headers['location']
         response = self.session.post(
             uri, data=file_data,
-            headers={'content-type': 'application/octet-stream'},
+            headers={'content-type': 'application/octet-stream', **self.request_extra_headers},
             **self.request_extra_opts
         )
 
