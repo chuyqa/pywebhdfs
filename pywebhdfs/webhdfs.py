@@ -22,7 +22,7 @@ class PyWebHdfsClient(object):
     def __init__(self, host='localhost', port='50070', user_name=None,
                  path_to_hosts=None, timeout=120,
                  base_uri_pattern="http://{host}:{port}/webhdfs/v1/",
-                 request_extra_opts={}):
+                 request_extra_opts={}, request_extra_headers={}):
         """
         Create a new client for interacting with WebHDFS
 
@@ -57,6 +57,7 @@ class PyWebHdfsClient(object):
         self.base_uri_pattern = base_uri_pattern.format(
             host="{host}", port=port)
         self.request_extra_opts = request_extra_opts
+        self.request_extra_headers = request_extra_headers
 
     def create_file(self, path, file_data, **kwargs):
         """
